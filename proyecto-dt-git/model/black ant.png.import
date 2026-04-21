@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rlltppyerqy4"
-path.s3tc="res://.godot/imported/red ant.png-0404023d705ffe0d513abdbcfd05b292.s3tc.ctex"
+uid="uid://bwig6xqehmnet"
+path.s3tc="res://.godot/imported/black ant.png-797cb59fd2dd8f8759249b515b0d4cdc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://model/red ant.png"
-dest_files=["res://.godot/imported/red ant.png-0404023d705ffe0d513abdbcfd05b292.s3tc.ctex"]
+source_file="res://model/black ant.png"
+dest_files=["res://.godot/imported/black ant.png-797cb59fd2dd8f8759249b515b0d4cdc.s3tc.ctex"]
 
 [params]
 
