@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cki3qkmwwykxb"]
+
+[ext_resource type="Script" uid="uid://u2vb0pi0txub" path="res://scenes/main/menu/menu.gd" id="1_cccsc"]
+[ext_resource type="FontFile" uid="uid://b3vahhcqr2c62" path="res://Bangers.ttf" id="2_6387k"]
+
+[node name="Menu" type="Control" unique_id=767278957]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cccsc")
+
+[node name="PanelMenu" type="VBoxContainer" parent="." unique_id=844383426]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -50.5
+offset_right = 59.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NuevaPartida" type="Button" parent="PanelMenu" unique_id=1858609771]
+layout_mode = 2
+text = "Nueva Partida"
+
+[node name="Opciones" type="Button" parent="PanelMenu" unique_id=875724219]
+layout_mode = 2
+text = "Opciones"
+
+[node name="Salir" type="Button" parent="PanelMenu" unique_id=1216617955]
+layout_mode = 2
+text = "Salir"
+
+[node name="Label" type="Label" parent="." unique_id=1558105169]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -311.0
+offset_top = 1.0
+offset_right = 320.0
+offset_bottom = 200.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_6387k")
+theme_override_font_sizes/font_size = 102
+text = "Ants VS Ants"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Opciones" type="VBoxContainer" parent="." unique_id=396234542]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = -50.5
+offset_right = 59.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Volumen" type="Button" parent="Opciones" unique_id=504393941]
+layout_mode = 2
+text = "Nueva Partida"
+
+[node name="Controles" type="Button" parent="Opciones" unique_id=1092463666]
+layout_mode = 2
+text = "Opciones"
+
+[node name="Volver" type="Button" parent="Opciones" unique_id=186491122]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="PanelMenu/NuevaPartida" to="." method="_on_nueva_partida_pressed"]
+[connection signal="pressed" from="PanelMenu/Opciones" to="." method="_on_opciones_pressed"]
+[connection signal="pressed" from="PanelMenu/Salir" to="." method="_on_salir_pressed"]
+[connection signal="pressed" from="Opciones/Volver" to="." method="_on_volver_pressed"]
