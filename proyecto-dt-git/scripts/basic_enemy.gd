@@ -13,7 +13,6 @@ func _ready():
 	pass
 
 func set_path(nuevo_path: Path3D):
-	print("set_path llamado - Asignando ruta al enemigo")
 	
 	if nuevo_path == null:
 		print("ERROR: El path recibido es null")
@@ -45,13 +44,6 @@ func set_path(nuevo_path: Path3D):
 	# Iniciar movimiento
 	is_moving = true
 	
-	# Mostrar información de depuración
-	print("Ruta asignada correctamente")
-	print("Longitud total de la ruta: ", total_length)
-	print("Posición inicial del enemigo: ", global_position)
-	print("Velocidad: ", speed, " unidades/segundo")
-	if total_length > 0:
-		print("Tiempo estimado de recorrido: ", total_length / speed, " segundos")
 
 func _physics_process(delta):
 	if not is_moving:
@@ -111,3 +103,6 @@ func reanudar_movimiento():
 	if path_follow:
 		is_moving = true
 		print("Movimiento reanudado")
+
+func get_path_follow():
+	return path_follow

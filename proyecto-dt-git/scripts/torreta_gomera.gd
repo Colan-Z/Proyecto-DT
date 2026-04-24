@@ -6,6 +6,9 @@ var objetivo_enemigo_actual:bool = false
 var obtener_progreso:float = 0
 
 func _process(delta):
+	enemigo_actual = obtener_enemigo_mas_avanzado()
+	if enemigo_actual == null:
+		return
 	if objetivo_enemigo_actual:
 		$Hormiga.look_at(enemigo_actual.global_position)
 		$Torreta.look_at(enemigo_actual.global_position)
@@ -16,12 +19,12 @@ func _on_rango_area_entered(area: Area3D):
 	print(area, " entro")
 	if enemigo_actual == null:
 		enemigo_actual = area
-	enemigo_en_rango.append(area)
+	enemigo_en_rango.append(area.get_parent())
 	print(enemigo_en_rango.size())
 
 func _on_rango_area_exited(area: Area3D):
 	print(area, " salio")
-	enemigo_en_rango.erase(area)
+	enemigo_en_rango.erase(area.get_parent())
 	print(enemigo_en_rango.size())
 	
 	if enemigo_actual == area:
@@ -30,13 +33,22 @@ func _on_rango_area_exited(area: Area3D):
 		obtener_progreso = 0
 	
 func rotacion_hacia_objetivo(objetivo, delta):
-	var vector_objetivo = $Hormiga.global_position.direction_to(Vector3(objetivo.global_position.x, global_position.y, objetivo.global_position.z))
-	var vector_objetivo_1 = $Torreta.global_position.direction_to(Vector3(objetivo.global_position.x, global_position.y, objetivo.global_position.z))
-	var objetivo_base = $Hormiga.basis.looking_at(vector_objetivo)
-	var objetivo_base_1 = $Torreta.basis.looking_at(vector_objetivo_1)
-	$Hormiga.basis = $Hormiga.basis.slerp(objetivo_base, obtener_progreso)
-	$Torreta.basis = $Torreta.basis.slerp(objetivo_base_1, obtener_progreso)
-	obtener_progreso += delta * 0.2
+	var dir_hormiga = $Hormiga.global_position.direction_to(Vector3(objetivo.global_position.x, global_position.y, objetivo.global_position.z))
+	var dir_torreta = $Torreta.global_position.direction_to(Vector3(objetivo.global_position.x, global_position.y, objetivo.global_position.z))
+	var target_hormiga = $Hormiga.basis.looking_at(dir_hormiga)
+	var target_torreta = $Torreta.basis.looking_at(dir_torreta)
+	var velocidad_rotacion = 5.0
+	$Hormiga.basis = $Hormiga.basis.slerp(target_hormiga, delta * velocidad_rotacion)
+	$Torreta.basis = $Torreta.basis.slerp(target_torreta, delta * velocidad_rotacion)
+
+func obtener_enemigo_mas_avanzado():
+	var mejor = null
+	var mayor_progreso = -1.0
 	
-	if obtener_progreso > 1:
-		objetivo_enemigo_actual = true
+	for enemigo in enemigo_en_rango:
+		if enemigo == null:
+			continue
+		if enemigo.current_offset > mayor_progreso:
+			mayor_progreso = enemigo.current_offset
+			mejor = enemigo
+	return mejor

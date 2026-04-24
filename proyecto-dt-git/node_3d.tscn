@@ -31,7 +31,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 2, 0)
 
 [node name="TorretaGomera" parent="." unique_id=686651658 instance=ExtResource("2_noarx")]
-transform = Transform3D(-0.99956656, 0, -0.029439399, 0, 1, 0, 0.029439399, 0, -0.99956656, 7.830972, 0.20705843, 8.54598)
+transform = Transform3D(-0.99956656, 0, -0.029439399, 0, 1, 0, 0.029439399, 0, -0.99956656, 7.6776667, 0.20705843, 6.077451)
 
 [node name="Spawner" type="Node3D" parent="." unique_id=1315967814 node_paths=PackedStringArray("path_to_follow")]
 script = ExtResource("4_jka67")
@@ -45,4 +45,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1785698, 0)
 curve = SubResource("Curve3D_a0tk4")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2" unique_id=1199965566]
-transform = Transform3D(0.0013298505, 0.05455098, -0.99850255, 1.8626392e-09, 0.99850285, 0.05455106, 0.9999959, -7.2546805e-05, 0.0013278645, 0.75080657, 0, 1.4918761)
+transform = Transform3D(0.0013298441, 0.054550983, -0.9984944, 1.8626302e-09, 0.9985029, 0.054550614, 0.99999106, -7.254681e-05, 0.0013278536, 0.75080657, 0, 1.4918761)
