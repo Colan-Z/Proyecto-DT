@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cr4i8bhfw07ai"]
+
+[ext_resource type="ArrayMesh" uid="uid://06675t6uneum" path="res://models/Piedra/Piedra.obj" id="1_qg452"]
+[ext_resource type="Script" uid="uid://bi4jo28st2xra" path="res://scripts/gomera_disparo_roca.gd" id="1_uguri"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uguri"]
+size = Vector3(0.53271484, 0.411438, 0.46380615)
+
+[node name="gomera_disparo_roca" type="Area3D" unique_id=616442612 groups=["Proyectiles"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_uguri")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=91612107]
+mesh = ExtResource("1_qg452")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1084126594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029716015, 0.23776245, 0.025787354)
+shape = SubResource("BoxShape3D_uguri")

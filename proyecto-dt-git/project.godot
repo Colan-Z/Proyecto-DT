@@ -19,6 +19,10 @@ run/main_scene="res://node_3d.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+Proyectiles="Todos los proyectiles"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

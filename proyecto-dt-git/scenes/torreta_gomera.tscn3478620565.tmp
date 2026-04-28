@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://ba6h6kri7r08o"]
 
 [ext_resource type="Script" uid="uid://q1uq7av8oxsd" path="res://scripts/torreta_gomera.gd" id="1_5b56a"]
+[ext_resource type="Texture2D" uid="uid://bwig6xqehmnet" path="res://models/black ant.png" id="1_6px8b"]
 [ext_resource type="PackedScene" uid="uid://cr4i8bhfw07ai" path="res://scenes/gomera_disparo_roca.tscn" id="2_tbf50"]
-[ext_resource type="Texture2D" uid="uid://bexnirgrwfno2" path="res://models/Hormiga gomera/black ant gomera.png" id="3_4bpeb"]
-[ext_resource type="ArrayMesh" uid="uid://fpf3lcaoqstt" path="res://models/Hormiga gomera/black ant gomera.obj" id="4_4bpeb"]
+[ext_resource type="ArrayMesh" uid="uid://86g2forvho1l" path="res://models/black ant.obj" id="2_uoiaj"]
+[ext_resource type="PackedScene" uid="uid://chkcj8pmhitnv" path="res://assets/weapon-ballista.fbx" id="3_uoiaj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbf50"]
-albedo_texture = ExtResource("3_4bpeb")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jooqe"]
+albedo_texture = ExtResource("1_6px8b")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fdn2k"]
 height = 0.7
@@ -20,9 +21,14 @@ escena_proyectil = ExtResource("2_tbf50")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Hormiga" unique_id=1034136176]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_tbf50")
-mesh = ExtResource("4_4bpeb")
+material_override = SubResource("StandardMaterial3D_jooqe")
+mesh = ExtResource("2_uoiaj")
 skeleton = NodePath("../..")
+
+[node name="Torreta" type="Node3D" parent="." unique_id=1324099344]
+
+[node name="weapon-ballista" parent="Torreta" unique_id=1911138246 instance=ExtResource("3_uoiaj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.16191)
 
 [node name="Rango" type="Area3D" parent="." unique_id=1732455118]
 collision_layer = 0
@@ -32,13 +38,5 @@ monitorable = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10858154, 0)
 shape = SubResource("CylinderShape3D_fdn2k")
 
-[node name="TimerDisparo" type="Timer" parent="." unique_id=1705196830]
-wait_time = 0.5
-autostart = true
-
-[node name="Marker3D" type="Marker3D" parent="." unique_id=1885312354]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1987109)
-
 [connection signal="area_entered" from="Rango" to="." method="_on_rango_area_entered"]
 [connection signal="area_exited" from="Rango" to="." method="_on_rango_area_exited"]
-[connection signal="timeout" from="TimerDisparo" to="." method="_on_timer_disparo_timeout"]
