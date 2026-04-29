@@ -6,6 +6,23 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_md22f"]
 size = Vector3(0.22167969, 0.16693115, 0.4499588)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_md22f"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fn5nn"]
+bg_color = Color(0, 0.7176471, 0.29803923, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cuegt"]
+viewport_path = NodePath("SubViewport")
+
 [node name="BasicEnemy" type="CharacterBody3D" unique_id=1489842584]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_md22f")
@@ -22,5 +39,22 @@ collision_mask = 2
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=155741028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010253906, 0.0796814, -0.006198883)
 shape = SubResource("BoxShape3D_md22f")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1320792943]
+size = Vector2i(80, 27)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport" unique_id=1575716501]
+custom_minimum_size = Vector2(80, 8)
+offset_right = 80.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_md22f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fn5nn")
+step = 1.0
+value = 100.0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=390060614]
+transform = Transform3D(0.43597037, 0, 0, 0, 0.3139488, 0, 0, 0, 0.99999994, 0, 0.22660604, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_cuegt")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

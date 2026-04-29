@@ -98,7 +98,8 @@ func _on_area_3d_area_entered(area: Area3D):
 	
 	if area.is_in_group("Proyectiles"):
 		vida = vida - area.damage
-		print(vida)
+		$SubViewport/ProgressBar.value = vida
+		#print(vida)
 		if vida <= 0:
 			queue_free()
 		area.queue_free()
